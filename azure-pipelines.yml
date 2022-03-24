@@ -11,7 +11,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    contents: '_buildOutput/**'
+    contents: '*.txt'
     targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
