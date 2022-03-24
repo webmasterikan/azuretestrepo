@@ -6,3 +6,11 @@ steps:
 - task: Ant@1
   inputs:
     buildFile: 'build.xml'
+
+# Publish Build Artifacts
+# Publish build artifacts to Azure Pipelines/TFS or a file share
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
