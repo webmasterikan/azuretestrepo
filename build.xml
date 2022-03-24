@@ -1,1 +1,8 @@
-...
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="testing" name="Just testing an Ant file, by echoing the date and time to a text file">
+  <target name="testing">
+    <tstamp>
+      <format property="TODAY_FR" pattern="yyyy-MM-dd HH:mm:ss:sss zzz" locale="fr,FR"/>
+    <echo message="The system date/time is ${TODAY_FR}" file="dttest.txt" append="false"/>
+  </target>
+</project>
