@@ -1,3 +1,7 @@
+# Set variables once
+variables:
+  buildResultPath: 'C:\agent_build'
+
 pool:
   name: Default
 
@@ -12,8 +16,8 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: '*.txt'
-    targetFolder: $(Build.ArtifactStagingDirectory)
+    targetFolder: $(buildResultPath)
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
+    pathToPublish: $(buildResultPath)
     artifactName: MyBuildOutputs
