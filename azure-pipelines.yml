@@ -7,10 +7,13 @@ steps:
   inputs:
     buildFile: 'build.xml'
 
-# Publish Build Artifacts
-# Publish build artifacts to Azure Pipelines/TFS or a file share
+
+
+- task: CopyFiles@2
+  inputs:
+    contents: '_buildOutput/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
