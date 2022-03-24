@@ -3,6 +3,7 @@
   <target name="testing">
     <tstamp>
       <format property="TODAY_FR" pattern="yyyy-MM-dd HH:mm:ss:sss zzz" locale="fr,FR"/>
+    </tstamp>
     <echo message="The system date/time is ${TODAY_FR}" file="dttest.txt" append="false"/>
   </target>
 </project>
