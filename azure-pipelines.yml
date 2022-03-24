@@ -16,8 +16,10 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: '*.txt'
-    targetFolder: $(buildResultPath)
+    #targetFolder: $(buildResultPath)
+    targetFolder: $(Agent.BuildDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: $(buildResultPath)
+    pathToPublish: $(Agent.BuildDirectory)
     artifactName: MyBuildOutputs
+
