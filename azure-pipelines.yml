@@ -15,7 +15,10 @@ steps:
 
 - task: CopyFiles@2
   inputs:
+    #sourcefolder entry, is not necessary because it's the default location here
+    #sourceFolder: '$(Build.SourcesDirectory)'
     contents: '*.txt'
+    #Example using a variable for the path. Investigate how to use user defined vars on the agent instead.
     #targetFolder: $(buildResultPath)
     targetFolder: $(Agent.BuildDirectory)
 - task: PublishBuildArtifacts@1
