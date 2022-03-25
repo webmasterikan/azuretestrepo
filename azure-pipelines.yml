@@ -1,0 +1,18 @@
+# Set variables once
+variables:
+  buildResultPath: 'C:\agent_build'
+
+pool:
+  name: Default
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildingTest
+    steps:
+    # Build with Apache Ant
+    - task: Ant@1
+      inputs:
+        buildFile: 'build.xml'
+
+
