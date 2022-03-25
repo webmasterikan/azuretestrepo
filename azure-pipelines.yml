@@ -24,22 +24,33 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         #Contents: '**/*.?(txt)'
         Contents: '*.txt'
-        #TargetFolder: $(Build.ArtifactStagingDirectory)
-        TargetFolder: 'C:\temp'
+        TargetFolder: $(Build.ArtifactStagingDirectory)
+        #TargetFolder: 'C:\temp'
 
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
 
-- stage: Test123
+- stage: deploy
   dependsOn: Build123
   condition: succeeded('Build123')
   jobs:
-  - job: TestTest
-    steps:
-    - script: echo 'inside B123 now'
-    - script: echo 'System.DefaultWorkingDirectory = $(System.DefaultWorkingDirectory)'
-    - script: echo 'Build.ArtifactStagingDirectory = $(Build.ArtifactStagingDirectory)'
-
+  - deployment: DeployTest
+    displayName: deploy testing
+    # creates an environment if it doesn't exist
+    environment: 'IkanDeploy'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
+          - task: CopyFiles@2
+            displayName: '...add a description'
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              #Contents: '**/*.?(txt)'
+              Contents: '*.txt'
+              TargetFolder: $(Build.ArtifactStagingDirectory)
+              #TargetFolder: 'C:\temp'
 
 
