@@ -24,6 +24,11 @@ stages:
         #targetFolder: $(buildResultPath)
         targetFolder: $(Agent.BuildDirectory)
 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: $(Agent.BuildDirectory)
+        artifactName: drop
+
 - stage: Test123
   dependsOn: Build123
   condition: succeeded('Build123')
