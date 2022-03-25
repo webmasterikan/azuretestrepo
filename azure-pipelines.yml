@@ -15,19 +15,19 @@ stages:
       inputs:
         buildFile: 'build.xml'
 
-    - task: CopyFiles@2
-      inputs:
-        #sourcefolder entry, is not necessary because it's the default location here
-        #sourceFolder: '$(Build.SourcesDirectory)'
-        contents: '*.txt'
-        #Example using a variable for the path. Investigate how to use user defined vars on the agent instead.
-        #targetFolder: $(buildResultPath)
-        targetFolder: $(Agent.BuildDirectory)
 
-    - task: PublishBuildArtifacts@1
+
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to artifact staging directory'
       inputs:
-        pathToPublish: $(Agent.BuildDirectory)
-        artifactName: drop
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**/*.?(txt)'
+        TargetFolder: $(Build.ArtifactStagingDirectory)
+
+    - upload: $(Build.ArtifactStagingDirectory)
+      artifact: drop
+
 
 - stage: Test123
   dependsOn: Build123
