@@ -6,7 +6,7 @@ pool:
   name: Default
 
 stages:
-- stage: Build
+- stage: Build123
   jobs:
   - job: BuildingTest
     steps:
@@ -14,5 +14,14 @@ stages:
     - task: Ant@1
       inputs:
         buildFile: 'build.xml'
+
+- stage: Test123
+  dependsOn: Build123
+  condition: succeeded('Build123')
+  jobs:
+  - job: TestTest
+    steps:
+    - script: echo 'inside B123 now'
+
 
 
