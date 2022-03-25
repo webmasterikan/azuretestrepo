@@ -27,7 +27,8 @@ stages:
         TargetFolder: $(Build.ArtifactStagingDirectory)
         #TargetFolder: 'C:\temp'
 
-
+    - upload: $(Build.ArtifactStagingDirectory)
+      artifact: drop
 
 
 - stage: deploy
