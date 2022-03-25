@@ -36,6 +36,8 @@ stages:
   - job: TestTest
     steps:
     - script: echo 'inside B123 now'
+    - script: echo 'System.DefaultWorkingDirectory = $(System.DefaultWorkingDirectory)'
+    - script: echo 'Build.ArtifactStagingDirectory = $(Build.ArtifactStagingDirectory)'
 
 
 
