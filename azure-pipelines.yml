@@ -24,7 +24,8 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         #Contents: '**/*.?(txt)'
         Contents: '*.txt'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
+        #TargetFolder: $(Build.ArtifactStagingDirectory)
+        TargetFolder: 'C:\temp'
 
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
