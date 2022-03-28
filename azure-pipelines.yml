@@ -33,7 +33,7 @@ stages:
 - stage: deploy
   # Variables reference syntax differs slightly from inter-stage condition syntax
   variables:
-    myOutputVar: $[stageDependencies.Build123.BuildingTest.outputs[]]
+    myOutputVar: $[stageDependencies.Build123.BuildingTest.outputs]
   dependsOn: Build123
   condition: succeeded('Build123')
   jobs:
