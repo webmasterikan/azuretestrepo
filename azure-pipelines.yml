@@ -43,6 +43,10 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo 'This is the end of the deploy stage'
+          - script: echo 'This is the end of the deploy stage'         
+          - script: echo '$(System.DefaultWorkingDirectory)'
+          - download: current
+            artifact: drop
+            
 
 
