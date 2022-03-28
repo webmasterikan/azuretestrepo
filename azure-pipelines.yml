@@ -37,7 +37,7 @@ stages:
           - task: DownloadBuildArtifacts@0
             displayName: 'Download Build Artifacts'
             inputs:
-              artifactName: WebSite
+              artifactName: drop
               downloadPath: $(buildResultPath)
             
           - task: CopyFiles@2
