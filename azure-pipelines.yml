@@ -17,10 +17,29 @@ stages:
     - task: BatchScript@1
       inputs:
         filename: 'C:\alm\ant\bin\ant.bat'
-        #arguments: 'justtesting.xml'
+        #arguments: 'justtesting'
         workingFolder: 'C:\agent_build'
         failOnStandardError: true
-          
+    
+    - upload: $(Build.ArtifactStagingDirectory)
+      artifact: drop
             
 
+- stage: deploy
+  dependsOn: Build123
+  condition: succeeded('Build123')
+  jobs:
+  - deployment: DeployTest
+    displayName: deploy testing
+    # creates an environment if it doesn't exist
+    environment: 'IkanDeploy'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo 'This is the end of the deploy stage'             
+          - script: echo '$(System.DefaultWorkingDirectory)'
+          - script: echo '$(Build.BinariesDirectory)'
+          - download: current
+            artifact: drop
 
