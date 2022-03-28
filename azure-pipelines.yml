@@ -20,10 +20,16 @@ stages:
         #arguments: 'justtesting'
         workingFolder: 'C:\agent_build'
         failOnStandardError: true
-    
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: 'C:\agent_build'
+        contents: '*.txt'
+        targetFolder: 'C:\agent_build\tmp'
+
     - task: PublishBuildArtifacts@1
       inputs:
-        pathToPublish: 'C:\agent_build' 
+        pathToPublish: 'C:\agent_build\tmp' 
         artifactName: 'drop' 
 
             
