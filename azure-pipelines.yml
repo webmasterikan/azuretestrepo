@@ -11,10 +11,7 @@ stages:
   jobs:
   - job: BuildingTest
     steps:
-    # Build with Apache Ant
-    - task: Ant@1
-      inputs:
-        buildFile: 'build.xml'
+
 
 
     - task: BatchScript@1
