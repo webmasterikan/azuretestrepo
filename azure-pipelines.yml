@@ -25,7 +25,7 @@ stages:
       inputs:
         pathToPublish: 'C:\agent_build' 
         artifactName: 'drop' 
-        targetPath: 'C:\agent_build'
+        targetPath: 'C:\agent_build\test'
         fileCopyOptions: '*.txt'
 
             
