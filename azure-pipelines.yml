@@ -17,38 +17,12 @@ stages:
         buildFile: 'build.xml'
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(System.DefaultWorkingDirectory)'
+        pathtoPublish: '$(buildResultPath)'
         #pathtoPublish: '$(buildResultPath)'
         artifactName: drop        
 
 
-- stage: deploy
-  dependsOn: Build123
-  condition: succeeded('Build123')
-  jobs:
-  - deployment: DeployTest
-    displayName: deploy testing
-    # creates an environment if it doesn't exist
-    environment: 'IkanDeploy'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: DownloadBuildArtifacts@0
-            displayName: 'Download Build Artifacts'
-            inputs:
-              artifactName: drop
-              #downloadPath: $(buildResultPath)
-              downloadPath: '$(System.DefaultWorkingDirectory)'
-            
-          - task: CopyFiles@2
-            displayName: 'Copy Files'
-            inputs:
-              SourceFolder: '$(System.DefaultWorkingDirectory)'
-              #Contents: '**/*.?(txt)'
-              Contents: '*.txt'
-              TargetFolder: $(deployResultPath)
-              #TargetFolder: 'C:\temp'            
+          
             
 
 
