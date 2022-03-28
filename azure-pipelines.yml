@@ -23,7 +23,7 @@ stages:
     
     - task: PublishBuildArtifacts@1
       inputs:
-        pathToPublish: 'C:\agent_build\*.txt' 
+        pathToPublish: 'C:\agent_build' 
         artifactName: 'drop' 
         publishLocation: 'filePath'
         targetPath: 'C:\agent_build\test'
