@@ -45,6 +45,7 @@ stages:
           steps:
           - script: echo 'This is the end of the deploy stage'             
           - script: echo '$(System.DefaultWorkingDirectory)'
+          - script: echo '$(Environment.Name)'
           - script: echo '$(Build.BinariesDirectory)'
           - download: current
             artifact: drop
