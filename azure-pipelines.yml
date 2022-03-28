@@ -17,8 +17,8 @@ stages:
         buildFile: 'build.xml'
     - task: PublishBuildArtifacts@1
       inputs:
-        #pathtoPublish: '$(System.DefaultWorkingDirectory)'
-        pathtoPublish: '$(buildResultPath)'
+        pathtoPublish: '$(System.DefaultWorkingDirectory)'
+        #pathtoPublish: '$(buildResultPath)'
         artifactName: drop        
 
 
@@ -38,12 +38,13 @@ stages:
             displayName: 'Download Build Artifacts'
             inputs:
               artifactName: drop
-              downloadPath: $(buildResultPath)
+              #downloadPath: $(buildResultPath)
+              downloadPath: '$(System.DefaultWorkingDirectory)'
             
           - task: CopyFiles@2
             displayName: 'Copy Files'
             inputs:
-              SourceFolder: '$(buildResultPath)'
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
               #Contents: '**/*.?(txt)'
               Contents: '*.txt'
               TargetFolder: $(deployResultPath)
