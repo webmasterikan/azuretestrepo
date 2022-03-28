@@ -21,8 +21,13 @@ stages:
         workingFolder: 'C:\agent_build'
         failOnStandardError: true
     
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: drop
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: 'C:\agent_build' 
+        artifactName: 'drop' 
+        targetPath: 'C:\agent_build'
+        fileCopyOptions: '*.txt'
+
             
 
 - stage: deploy
