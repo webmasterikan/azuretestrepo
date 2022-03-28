@@ -15,13 +15,14 @@ stages:
     - task: Ant@1
       inputs:
         buildFile: 'build.xml'
-    - task: PublishBuildArtifacts@1
+
+
+    - task: BatchScript@1
       inputs:
-        pathtoPublish: '$(buildResultPath)'
-        #pathtoPublish: '$(buildResultPath)'
-        artifactName: drop        
-
-
+        filename: 'C:\alm\ant\bin\ant.bat'
+        arguments: 'justtesting.xml'
+        workingFolder: 'C:\agent_build'
+        failOnStandardError: true
           
             
 
