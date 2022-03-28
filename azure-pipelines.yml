@@ -20,7 +20,7 @@ stages:
     - task: BatchScript@1
       inputs:
         filename: 'C:\alm\ant\bin\ant.bat'
-        arguments: 'justtesting.xml'
+        #arguments: 'justtesting.xml'
         workingFolder: 'C:\agent_build'
         failOnStandardError: true
           
